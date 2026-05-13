@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 require("dotenv").config();
 
 const app = express();
@@ -8,9 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const deleteAccountRoutes = require("./routes/deleteAccount");
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/languages", require("./routes/language"));
+app.use("/api/delete-account", deleteAccountRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
