@@ -112,7 +112,7 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     // Reset URL
-const resetUrl = `https://admin.mothertonguetranslator.com/reset-password/${resetToken}`;
+const resetUrl = `http://localhost:5000/reset-password/${resetToken}`;
 
     // Nodemailer transporter
     const transporter = nodemailer.createTransport({
