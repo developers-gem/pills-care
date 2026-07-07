@@ -192,4 +192,22 @@ router.post("/reset-password/:token", async (req, res) => {
   }
 });
 
+router.post("/delete",async(req,res)=>{
+  try{
+    let {email} = req.body;
+    console.log(email);
+    const user = await User.findOne({email:email})
+    console.log(user)
+    if(!user){
+      res.status(403).json({success:false,message:"this is not our user"})
+    }
+    else{
+      await User.findByIdAndDelete(user.id)
+      res.status(200).json({success:true,message:"user deleted successfully"})
+    }
+  }catch(err){
+      console.log(`some error accured during users deletion ${err}`)
+  }
+})
+
 module.exports = router;
