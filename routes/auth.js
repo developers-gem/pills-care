@@ -192,10 +192,10 @@ router.post("/reset-password/:token", async (req, res) => {
   }
 });
 
-router.post("/delete",async(req,res)=>{
+router.delete("/delete",async(req,res)=>{
   try{
     let {email} = req.body;
-    console.log(email);
+    // console.log(email);
     const user = await User.findOne({email:email})
     console.log(user)
     if(!user){
@@ -209,5 +209,6 @@ router.post("/delete",async(req,res)=>{
       console.log(`some error accured during users deletion ${err}`)
   }
 })
+
 
 module.exports = router;

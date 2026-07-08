@@ -5,13 +5,13 @@ require("dotenv").config();
 
 const app = express();
 
-const corsKeys={
-  "origin": "*",
+const corsOptions={
+  "origin": "http://localhost:5173",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204
 }
-app.use(cors(corsKeys));
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
