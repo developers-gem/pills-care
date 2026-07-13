@@ -5,12 +5,11 @@ require("dotenv").config();
 
 const app = express();
 
-const corsOptions={
-  "origin": "http://localhost:5173",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
-}
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
@@ -20,8 +19,7 @@ app.use("/api/auth", require("./routes/auth"));
 
 
 // mongoose.connect(process.env.MONGO_URI)
-mongoose.connect('mongodb://127.0.0.1:27017/pills-care')
-
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
