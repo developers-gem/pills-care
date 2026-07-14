@@ -32,7 +32,7 @@ export default function Footer() {
 
             <p className="para">
               Medication reminders for seniors and the people who care
-              for them. A product of {SITE.legalEntity}.
+              for them. A product of Badexy Technologies LLC.
             </p>
 
           </div>
