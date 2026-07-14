@@ -27,9 +27,7 @@ export default function Terms() {
         <div className="container">
           <span className="eyebrow">Legal</span>
           <h1>Terms &amp; Conditions</h1>
-          <p className="legal-updated">
-            Effective date: <span className="placeholder">[Insert Effective Date]</span> · Last updated: <span className="placeholder">[Insert Date]</span>
-          </p>
+          
         </div>
       </section>
 

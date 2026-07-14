@@ -27,9 +27,7 @@ export default function PrivacyPolicy() {
         <div className="container">
           <span className="eyebrow">Legal</span>
           <h1>Privacy Policy</h1>
-          <p className="legal-updated">
-            Effective date: <span className="placeholder">[Insert Effective Date]</span> · Last updated: <span className="placeholder">[Insert Date]</span>
-          </p>
+         
         </div>
       </section>
 
@@ -149,9 +147,9 @@ export default function PrivacyPolicy() {
             <p>If you have questions about this Privacy Policy or want to exercise a privacy right, contact us at:</p>
             <p>
               <strong>{SITE.legalEntity}</strong><br />
-              Email: <a href={`mailto:${SITE.privacyEmail}`}>{SITE.privacyEmail}</a><br />
-              Phone: <a href={`tel:${SITE.phone.replace(/[^0-9+]/g, '')}`}>{SITE.phone}</a><br />
-              Address: {SITE.address.line1}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}
+              Email:  Info@badexytechnologies.com <br />
+              Phone:  (334) 354-5922 <br />
+              Address: 5726 Lake Cyrus Blvd, Birmingham, Alabama 35244
             </p>
           </article>
         </div>
