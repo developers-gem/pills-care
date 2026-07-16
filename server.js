@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const Medication = require("./models/Medications")
+const medications  = require("./routes/medications")
 
 const app = express();
 
@@ -13,12 +15,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Routes
+// User  Routes
 app.use("/api/auth", require("./routes/auth"));
+
+// medication  Routes 
+app.use("/api/medications",medications);
 
 
 
 // mongoose.connect(process.env.MONGO_URI)
+// mongoose.connect('mongodb://127.0.0.1:27017/pills-care')
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
