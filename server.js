@@ -17,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// User  Routes
+// User  Routesremainder
 app.use("/api/auth", require("./routes/auth"));
 
 // medication  Routes 

@@ -28,7 +28,7 @@ router.post("/signup", async (req, res) => {
     // ✅ check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ msg: "User already exists" });
+      return res.status(400).json({success:false, msg: "User already exists" });
     }
 
     const hashed = await bcrypt.hash(password, 10);
@@ -42,13 +42,17 @@ router.post("/signup", async (req, res) => {
     });
 
     // ✅ don't send password in response
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-       dob: user.dob,
-      gender: user.gender,
-      role: user.role
+    // res.json({
+    //   _id: user._id,
+    //   name: user.name,
+    //   email: user.email,
+    //    dob: user.dob,
+    //   gender: user.gender,
+    //   role: user.role
+    // });
+    res.status(200).json({
+      success:true,
+      msg:"user created successfully"
     });
 
   } catch (err) {
@@ -59,20 +63,71 @@ router.post("/signup", async (req, res) => {
 });
 // Login
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) return res.status(404).json({ msg: "User not found" });
+    // Validate Input
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and password are required.",
+      });
+    }
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) return res.status(400).json({ msg: "Wrong password" });
+    // Find User
+    const user = await User.findOne({ email });
 
-  const token = jwt.sign(
-    { id: user._id, role: user.role },
-    process.env.JWT_SECRET
-  );
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
 
-  res.json({ token, role: user.role });
+    // Compare Password
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password.",
+      });
+    }
+
+    // Generate JWT Token
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      }
+    );
+
+    // Success Response
+    res.status(200).json({
+      success: true,
+      message: "Login successful.",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        gender: user.gender,
+        dob: user.dob,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error.",
+    });
+  }
 });
 
 // profile
@@ -211,5 +266,22 @@ router.delete("/delete",async(req,res)=>{
   }
 })
 
+
+// delete route
+
+// POST /api/auth/logout
+router.post("/logout", (req, res) => {
+  try {
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully.",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 
 module.exports = router;
