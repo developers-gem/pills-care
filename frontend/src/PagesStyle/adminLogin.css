@@ -1,0 +1,144 @@
+.admin-login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f4f6fb;
+    padding:120px 20px 40px;
+}
+
+.admin-login-card{
+    width:100%;
+    max-width:430px;
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.admin-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#1F4B43;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:34px;
+    margin:0 auto 20px;
+}
+
+.admin-login-card h2{
+    text-align:center;
+    color:#1F4B43;
+    margin-bottom:8px;
+}
+
+.admin-login-card p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.admin-input-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.admin-input-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+}
+
+.admin-input-group input{
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.admin-input-group input:focus{
+    border-color:#1F4B43;
+}
+
+.admin-password{
+    display:flex;
+}
+
+.admin-password input{
+    flex:1;
+    border-radius:8px 0 0 8px;
+}
+
+.admin-password button{
+    width:80px;
+    border:none;
+    background:#1F4B43;
+    color:white;
+    cursor:pointer;
+    border-radius:0 8px 8px 0;
+}
+
+.admin-password button:hover{
+    background:#173932;
+}
+
+.admin-login-btn{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#1F4B43;
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.admin-login-btn:hover{
+    background:#173932;
+}
+
+.admin-footer{
+    text-align:center;
+    margin-top:25px;
+}
+
+.admin-footer a{
+    color:#1F4B43;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.admin-footer a:hover{
+    color:#E39A3B;
+}
+
+@media(max-width:500px){
+
+.admin-login-card{
+    padding:25px;
+}
+
+.admin-password{
+    flex-direction:column;
+}
+
+.admin-password input{
+    border-radius:8px;
+}
+
+.admin-password button{
+    width:100%;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+}

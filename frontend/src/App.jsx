@@ -9,6 +9,7 @@ import Terms from "./pages/Terms";
 import DeleteUser from "./pages/DeleteUser";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/delete-user" element={<DeleteUser />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
       </Routes>
       <Footer />
     </>

@@ -284,4 +284,56 @@ router.post("/logout", (req, res) => {
   }
 });
 
+
+
+// admin-login
+
+router.post("/admin/login", async (req, res) => {
+
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        return res.status(404).json({
+            success:false,
+            message:"Admin not found"
+        });
+    }
+
+    if(user.role !== "admin"){
+        return res.status(403).json({
+            success:false,
+            message:"Access Denied"
+        });
+    }
+
+    // const isMatch = await bcrypt.compare(password,user.password);
+
+    // if(!isMatch){
+    //     return res.status(401).json({
+    //         success:false,
+    //         message:"Wrong Password"
+    //     });
+    // }
+
+    const token = jwt.sign(
+        {
+            id:user._id,
+            role:user.role
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn:"7d"
+        }
+    );
+
+    res.status(200).json({
+        success:true,
+        token,
+        user
+    });
+
+});
+
 module.exports = router;
