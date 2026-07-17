@@ -4,10 +4,11 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const User = require("../models/User");
-const authMiddleware = require("../middleware/auth.middleware.js");
+const verifyToken = require("../middleware/auth.middleware.js");
 
 
 // GET ALL USERS (admin only ideally)
+
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password -__v");
@@ -76,7 +77,7 @@ router.post("/login", async (req, res) => {
 
 // profile
 
-router.get("/profile", authMiddleware, async (req, res) => {
+router.get("/profile", verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
 
@@ -112,7 +113,7 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     // Reset URL
-const resetUrl = `http://localhost:5000/reset-password/${resetToken}`;
+    const resetUrl = `http://localhost:5000/reset-password/${resetToken}`;
 
     // Nodemailer transporter
     const transporter = nodemailer.createTransport({
