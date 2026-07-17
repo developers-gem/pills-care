@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
 
+const mongoose = require("mongoose")
 const medicationSchema = new mongoose.Schema(
   {
     user: {
@@ -85,4 +85,5 @@ const medicationSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Medication", medicationSchema);
+const Medication = mongoose.model("Medication", medicationSchema);
+module.exports = Medication

@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-
+const mongoose = require("mongoose")
 const reminderScheduleSchema = new mongoose.Schema(
   {
     // Medication Reference
@@ -68,7 +67,9 @@ const reminderScheduleSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model(
+const  ReminderSchedule =  mongoose.model(
   "ReminderSchedule",
   reminderScheduleSchema
 );
+
+module.exports = ReminderSchedule;

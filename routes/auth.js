@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const User = require("../models/User");
-const authMiddleware = require("../middleware/auth-middleware");
+const authMiddleware = require("../middleware/auth.middleware.js");
 
 
 // GET ALL USERS (admin only ideally)

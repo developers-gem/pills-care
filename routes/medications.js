@@ -3,20 +3,9 @@ const mongoose = require("mongoose")
 
 const router = express.Router();
 
+const  Medication = require("../models/Medications.js");
+const  verifyToken = require("../middleware/auth.middleware.js");
 
-// create medication 
-
-//read meadication
-
-// update medication
-
-// delete medication
-
-import express from "express";
-import Medication from "../models/Medication.js";
-import { verifyToken } from "../middlewares/auth.middleware.js";
-
-const router = express.Router();
 
 /*
 ==================================================
@@ -178,4 +167,4 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
-export default router;
+module.exports =router;
