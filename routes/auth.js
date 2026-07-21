@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const User = require("../models/User");
 const verifyToken = require("../middleware/auth.middleware.js");
+const adminMiddleware = require("../middleware/admin.middleware.js");
 
 
 // GET ALL USERS (admin only ideally)
@@ -105,6 +106,7 @@ router.post("/login", async (req, res) => {
         expiresIn: "7d",
       }
     );
+
 
     // Success Response
     res.status(200).json({

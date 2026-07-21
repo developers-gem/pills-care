@@ -20,7 +20,6 @@ router.post("/", async (req, res) => {
       user: req.user.id, // Logged-in user
       ...req.body,
     });
-
     res.status(201).json({
       success: true,
       message: "Medication added successfully.",
@@ -45,8 +44,8 @@ router.get("/", verifyToken, async (req, res) => {
   try {
     const medications = await Medication.find({
       user: req.user.id,
-    }).sort({ createdAt: -1 });
-
+    }).sort({ createdAt: -1 }).populate('user');
+    console.log(medications)
     res.status(200).json({
       success: true,
       count: medications.length,

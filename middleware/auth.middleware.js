@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
   try {
     // Get token from cookies
     const token = req.headers.authorization?.split(" ")[1];
-    
+    console.log("token ",token)
     // Check if token exists
     if (!token) {
       return res.status(401).json({

@@ -37,7 +37,7 @@ const Login = () => {
       return;
     }
 
-    console.log(loginDetails);
+    // console.log(loginDetails);
 
     // axios.post("/api/login", loginDetails)
     const res = await fetch("http://localhost:5000/api/auth/login", {
@@ -49,7 +49,7 @@ const Login = () => {
     });
 
     const data = await res.json();
-
+    console.log("login details are ", data);
     if (data.success) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
