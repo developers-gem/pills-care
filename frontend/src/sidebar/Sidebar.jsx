@@ -17,7 +17,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Sidebar = () => {
-  cosnt[(token, setToken)] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const handleLogout = async () => {
     try {
       // const token = localStorage.getItem("token");
