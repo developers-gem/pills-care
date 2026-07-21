@@ -14,7 +14,7 @@ POST /api/medications
 ==================================================
 */
 
-router.post("/", async (req, res) => {
+router.post("/",verifyToken ,async (req, res) => {
   try {
     const medication = await Medication.create({
       user: req.user.id, // Logged-in user

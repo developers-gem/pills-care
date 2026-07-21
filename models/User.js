@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   resetPasswordToken: String,
 resetPasswordExpires: Date,
   dob: {
-    type: Date,
+    type: String,
+    // type: Date,
   },
 
   gender: {
