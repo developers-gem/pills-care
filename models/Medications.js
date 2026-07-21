@@ -48,12 +48,14 @@ const medicationSchema = new mongoose.Schema(
     },
 
     startDate: {
-      type: Date,
+      // type: Date,
+      type:String,
       required: true,
     },
 
     endDate: {
-      type: Date,
+      // type: Date,
+      type:String
     },
 
     frequency: {

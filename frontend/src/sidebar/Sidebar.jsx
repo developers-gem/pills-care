@@ -13,8 +13,37 @@ import {
 } from "react-icons/fa";
 
 import "./Sidebar.css";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Sidebar = () => {
+  cosnt[(token, setToken)] = useState(localStorage.getItem("token"));
+  const handleLogout = async () => {
+    try {
+      // const token = localStorage.getItem("token");
+
+      await fetch("http://localhost:5000/api/auth/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      // Notify Header
+      // window.dispatchEvent(new Event("authChanged"));
+
+      alert("Logged out successfully!");
+
+      navigate("/admin-login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {});
   return (
     <div className="sidebar">
       {/* Logo */}
@@ -82,7 +111,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <button className="logout-btn">
+        <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt />
           Logout
         </button>
