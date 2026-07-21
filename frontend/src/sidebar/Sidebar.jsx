@@ -18,6 +18,7 @@ import { useEffect } from "react";
 
 const Sidebar = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
+  console.log("token inside the sidebar component ", token);
   const handleLogout = async () => {
     try {
       // const token = localStorage.getItem("token");
