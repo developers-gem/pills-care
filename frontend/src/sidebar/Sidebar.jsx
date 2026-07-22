@@ -303,14 +303,14 @@ const Sidebar = () => {
             <span>Reports</span>
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/admin/dashboard/profile"
             className="sidebar-link"
             onClick={closeSidebar}
           >
             <FaUserCircle />
             <span>Profile</span>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/admin/dashboard/settings"
