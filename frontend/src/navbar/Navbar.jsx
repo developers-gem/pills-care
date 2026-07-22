@@ -22,7 +22,7 @@ const Navbar = ({ toggleSidebar }) => {
 
       {/* Right */}
 
-      <div className="navbar-right">
+      {/* <div className="navbar-right">
         <button className="icon-btn">
           <FaSun />
         </button>
@@ -42,7 +42,7 @@ const Navbar = ({ toggleSidebar }) => {
             <span>Patient</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };

@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
   try {
     // Get token from cookies
     const token = req.headers.authorization?.split(" ")[1];
-    console.log("token ",token)
+    console.log("token inside the users middleware",token)
     // Check if token exists
     if (!token) {
       return res.status(401).json({
@@ -21,6 +21,7 @@ const verifyToken = (req, res, next) => {
     // Store user information in request object
     req.user = {
       id: decoded.id,
+      role:decoded.role
     };
     
     next();
@@ -34,22 +35,4 @@ const verifyToken = (req, res, next) => {
 
 module.exports = verifyToken
 
-/*
-module.exports = (req, res, next) => {
-  try {
-    // 👇 THIS LINE goes here
-    const token = req.headers.authorization?.split(" ")[1];
-    
-    if (!token) {
-      return res.status(401).json({ msg: "No token provided" });
-    }
-    
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    
-    next();
-  } catch (err) {
-    return res.status(401).json({ msg: "Invalid token" });
-  }
-};
-*/
+

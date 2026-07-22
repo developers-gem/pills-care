@@ -12,7 +12,7 @@ const DashboardLayout = () => {
       </aside>
 
       <div className="dashboard-main">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <main className="dashboard-content">
           <Outlet />

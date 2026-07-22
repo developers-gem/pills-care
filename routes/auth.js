@@ -338,4 +338,35 @@ router.post("/admin/login", async (req, res) => {
 
 });
 
+
+//admin getting all the users details
+
+router.get("/admin/all-users",adminMiddleware, async (req, res) => {
+  try {
+    const users = await User.find({ role: "user" }).lean();
+
+    if (users.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No users found.",
+        data: [],
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Users fetched successfully.",
+      count: users.length,
+      data: users,
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error.",
+      // error: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
+  }
+});
 module.exports = router;

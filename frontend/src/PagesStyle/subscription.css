@@ -1,0 +1,217 @@
+.subscription-page{
+    padding:30px;
+}
+
+.subscription-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+    gap:20px;
+}
+
+.subscription-header h1{
+    font-size:30px;
+    color:#1F4B43;
+}
+
+.subscription-header p{
+    margin-top:8px;
+    color:#777;
+}
+
+.add-plan-btn{
+    border:none;
+    background:#1F4B43;
+    color:white;
+    padding:14px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.add-plan-btn:hover{
+    background:#163730;
+}
+
+.plans-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.plan-card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    position:relative;
+    transition:.3s;
+}
+
+.plan-card:hover{
+    transform:translateY(-8px);
+}
+
+.popular-badge{
+    position:absolute;
+    top:-15px;
+    right:20px;
+    background:#E39A3B;
+    color:white;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.plan-card h2{
+    color:#1F4B43;
+    font-size:26px;
+}
+
+.price{
+    margin:25px 0;
+}
+
+.price span{
+    font-size:40px;
+    color:#1F4B43;
+    font-weight:bold;
+}
+
+.price small{
+    display:block;
+    margin-top:5px;
+    color:#888;
+}
+
+.plan-card ul{
+    list-style:none;
+    margin:25px 0;
+}
+
+.plan-card li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+    color:#555;
+}
+
+.plan-card li svg{
+    color:#22C55E;
+}
+
+.plan-actions{
+    display:flex;
+    gap:15px;
+}
+
+.edit-btn,
+.delete-btn{
+    flex:1;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+}
+
+.edit-btn{
+    background:#0D6EFD;
+    color:white;
+}
+
+.edit-btn:hover{
+    background:#0957cb;
+}
+
+.delete-btn{
+    background:#DC3545;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#b42b39;
+}
+
+.free{
+    border-top:6px solid #22C55E;
+}
+
+.premium{
+    border-top:6px solid #E39A3B;
+}
+
+.pro{
+    border-top:6px solid #0D6EFD;
+}
+
+@media(max-width:992px){
+
+.subscription-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+}
+
+@media(max-width:768px){
+
+.subscription-page{
+    padding:20px;
+}
+
+.subscription-header h1{
+    font-size:25px;
+}
+
+.plan-card{
+    padding:25px;
+}
+
+.price span{
+    font-size:34px;
+}
+
+.plan-actions{
+    flex-direction:column;
+}
+
+}
+
+@media(max-width:480px){
+
+.subscription-page{
+    padding:15px;
+}
+
+.plan-card{
+    padding:20px;
+}
+
+.subscription-header h1{
+    font-size:22px;
+}
+
+.price span{
+    font-size:30px;
+}
+
+.add-plan-btn{
+    width:100%;
+    justify-content:center;
+}
+
+}

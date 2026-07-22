@@ -49,10 +49,8 @@
 // export default App;
 
 import { Routes, Route } from "react-router-dom";
-
 import MainLayout from "./layouts/MainLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
-
 import Home from "./pages/Home";
 import Support from "./pages/Support";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -61,13 +59,13 @@ import DeleteUser from "./pages/DeleteUser";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AdminLogin from "./pages/AdminLogin";
-
 import Dashboard from "./pages/Dashboard";
-import Schedule from "./pages/Schedule";
+import Users from "./pages/Users";
 import Medications from "./pages/Medications";
-import History from "./pages/History";
+import Subscription from "./pages/Subscription";
 import Reports from "./pages/Reports";
 import Profile from "./pages/Profile";
+import Setting from "./pages/Setting";
 
 function App() {
   return (
@@ -88,9 +86,8 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/login" element={<Login />} />
-
-        <Route path="/admin-login" element={<AdminLogin />} />
       </Route>
+      <Route path="/admin-login" element={<AdminLogin />} />
 
       {/* Dashboard pages without Header/Footer */}
 
@@ -99,13 +96,14 @@ function App() {
 
         <Route path="medications" element={<Medications />} />
 
-        <Route path="schedule" element={<Schedule />} />
+        <Route path="users" element={<Users />} />
 
-        <Route path="history" element={<History />} />
+        <Route path="subscription" element={<Subscription />} />
 
         <Route path="reports" element={<Reports />} />
 
         <Route path="profile" element={<Profile />} />
+        <Route path="settings" element={<Setting />} />
       </Route>
     </Routes>
   );

@@ -1,10 +1,9 @@
 const express = require("express")
 const mongoose = require("mongoose")
-
 const router = express.Router();
-
 const  Medication = require("../models/Medications.js");
 const  verifyToken = require("../middleware/auth.middleware.js");
+const adminMiddleware = require("../middleware/admin.middleware.js");
 
 
 /*
@@ -166,4 +165,37 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 
+
+// api end point for getting all the medications
+
+router.get("/admin/all-medications",adminMiddleware ,async (req, res) => {
+  try {
+    const medications = await Medication.find()
+      .populate("user", "name email")
+      .lean();
+
+    if (medications.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No medications found.",
+        count: 0,
+        data: [],
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Medications fetched successfully.",
+      count: medications.length,
+      data: medications,
+    });
+  } catch (error) {
+    console.error("Error fetching medications:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error.",
+    });
+  }
+});
 module.exports =router;
